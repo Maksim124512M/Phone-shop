@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Головна сторінка</title>
+<link rel="stylesheet" href="{% static 'phones/css/home.css' %}">
+{% endblock %}
+
+{% block body %}
+<div>
+    {% for phone in phones %}
+        <div>
+            <h6>{{ phone.name }}</h6>
+            <h6>{{ phone.price }}</h6>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

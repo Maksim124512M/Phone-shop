@@ -1,0 +1,52 @@
+header {
+    height: 50px;
+    position: relative;
+}
+
+header h1 {
+    position: absolute;
+    color: orange;
+    left: 35px;
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    right: 30px;
+    top: -20px;
+}
+
+header ul li {
+    padding: 30px;
+    font-size: 20px;
+}
+ 
+li a {
+    text-decoration: none;
+    color: orange;
+}
+
+li a:hover {
+    color: rgb(171, 171, 171);
+}
+
+div ul {
+    list-style: none;
+    display: flex;
+    margin-top: 20px;
+    margin-left: -30px;
+    font-size: 20px;
+}
+
+div ul li {
+    display: inline-block;
+    margin-top: 30px;
+    padding-left: 72.5px;
+}
+
+div ul li a {
+    position: relative;
+    bottom: 22px;
+    left: 0px;
+}
