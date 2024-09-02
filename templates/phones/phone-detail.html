@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>{{ phone.name }}</title>
+<link rel="stylesheet" href="{% static 'phones/css/phone_detail.css' %}">
+{% endblock %}
+
+{% block body %}
+<div>
+    <img src="{{ phone.image.url }}" width="400" height="550">
+    <div class="info">
+        <h2>{{ phone.name }}</h2>
+        <h3 class="mt-2 me-5">{{ phone.price }} грн</h3>
+        <h5>Серія: {{ phone.series }}</h5>
+        <h5>Діагональ екрана: {{ phone.screen_diagonal }}</h5>
+        <h5>Роздільна здатність дисплея: {{ phone.display_resolution }}</h5>
+        <h5>Тип матриці: {{ phone.type_of_matrix }}</h5>
+        <h5>Частота оновлення екрану: {{ phone.screen_refresh_rate }}</h5>
+        <h5>Кількість сім - карт: {{ phone.count_of_sim_cards }}</h5>
+        <h5>Оперативна пам'ять: {{ phone.ram }}</h5>
+        <h5>Вбудована пам'ять: {{ phone.built_in_memory }}</h5>
+        <h5>Операційна система: {{ phone.operating_system }}</h5>
+        <h5>Кількість ядер: {{ phone.count_of_cores }}</h5>
+        <h5>Частота: {{ phone.frequency }}</h5>
+        <h5>Вага: {{ phone.weight }}</h5>
+        <h5>Ширина: {{ phone.width }}</h5>
+        <h5>Висота: {{ phone.height }}</h5>
+        <h5>Глибина: {{ phone.depth }}</h5>
+        <h5>Гаратнія: {{ phone.guarantee }}</h5>
+        <h5>Країна виробник: {{ phone.country_of_manufacture }}</h5>
+    </div>
+</div>
+{% endblock %}

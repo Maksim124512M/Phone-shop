@@ -7,12 +7,17 @@
 {% endblock %}
 
 {% block body %}
-<div>
+<div class="phones">
     {% for phone in phones %}
-        <div>
-            <h6>{{ phone.name }}</h6>
-            <h6>{{ phone.price }}</h6>
-        </div>
+        <a href="{% url 'phone_detail' phone.id %}" style="text-decoration: none;" class="text-dark">
+            <div class="phone">
+                <div class="info">
+                    <img src="{{ phone.image.url }}" width="188" height="250">
+                    <h6>{{ phone.name }}</h6>
+                    <h6>{{ phone.price }}</h6>
+                </div>
+            </div>
+        </a>
     {% endfor %}
 </div>
 {% endblock %}

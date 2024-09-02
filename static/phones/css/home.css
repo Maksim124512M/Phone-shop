@@ -1,0 +1,21 @@
+.phones {
+    margin-left: 50px;
+    margin-top: 25px;
+}
+
+.phone {
+    border: 1px solid black;
+    width: 200px;
+    height: 300px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-left: 50px;
+}
+
+.info img {
+    margin-left: -5px;
+}
+
+.info {
+    margin-left: 10px;
+}

@@ -1,7 +1,9 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Phone(models.Model):
+    image = models.ImageField(upload_to='phones-images/', null=True)
     name = models.CharField(max_length=255)
     series = models.CharField(max_length=255)
     screen_diagonal = models.FloatField()
