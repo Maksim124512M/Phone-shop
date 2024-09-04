@@ -3,6 +3,12 @@ div img {
     margin-left: 100px;
 }
 
+div a button {
+    width: 300px;
+    margin-left: 150px;
+    margin-top: 10px;
+}
+
 .info {
     position: absolute;
     right: 200px;
