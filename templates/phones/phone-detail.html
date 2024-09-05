@@ -9,7 +9,7 @@
 {% block body %}
 <div>
     <img src="{{ phone.image.url }}" width="400" height="550"><br>
-    <a href=""><button class="btn btn-success">Купити</button></a>
+    <a href="{% url 'phones:create_order' phone.id %}"><button class="btn btn-success">Купити</button></a>
     <div class="info">
         <h2>{{ phone.name }}</h2>
         <h3 class="mt-2 me-5">{{ phone.price }} грн</h3>

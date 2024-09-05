@@ -30,3 +30,18 @@ class Phone(models.Model):
     class Meta:
         verbose_name = 'Телефон'
         verbose_name_plural = 'Телефони'
+
+
+class Order(models.Model):
+    product = models.ForeignKey(Phone, on_delete=models.CASCADE)
+    name = models.CharField(max_length=64)
+    surname = models.CharField(max_length=64)
+    phone_number = models.CharField(max_length=255)
+    email = models.EmailField()
+
+    def __str__(self):
+        return f'Замовлення {self.id} - {self.product.name}'
+
+    class Meta:
+        verbose_name = 'Замовлення'
+        verbose_name_plural = 'Замовлення'
