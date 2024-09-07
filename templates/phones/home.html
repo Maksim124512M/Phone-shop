@@ -18,6 +18,7 @@
                 </div>
             </div>
         </a>
+        <a href="{% url 'phones:add_product_in_basket' phone.id %}" class="right-25"><img src="{% static 'phones/img/basket.png' %}" width="25" height="25" class="basket"></a>
     {% endfor %}
 </div>
 {% endblock %}

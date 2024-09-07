@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 
 class Phone(models.Model):
@@ -45,3 +46,15 @@ class Order(models.Model):
     class Meta:
         verbose_name = 'Замовлення'
         verbose_name_plural = 'Замовлення'
+
+
+class Basket(models.Model):
+    product = models.ForeignKey(Phone, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.owner} - {self.product}'
+
+    class Meta:
+        verbose_name = 'Корзина'
+        verbose_name = 'Корзини'

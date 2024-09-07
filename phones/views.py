@@ -1,7 +1,10 @@
 from django.views import generic
 from django.urls import reverse_lazy
+from django.shortcuts import redirect, HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-from phones.models import Phone, Order
+from phones.models import Phone, Order, Basket
 from phones.forms import CreateOrder
 
 
@@ -34,3 +37,29 @@ class CreateOrder(generic.CreateView):
         form.instance.product = phone
         
         return super().form_valid(form)
+
+
+class BasketView(LoginRequiredMixin, generic.ListView):
+    template_name = 'phones/basket.html'
+    model = Basket
+    context_object_name = 'baskets'
+
+    def get_queryset(self):
+        baskets = Basket.objects.filter(owner=self.request.user)
+
+        return baskets
+
+
+@login_required
+def add_product_in_basket(request, pk):
+    product = Phone.objects.get(id=pk)
+    basket = Basket.objects.filter(product=product, owner=request.user)
+    
+    Basket.objects.create(
+        product=product,
+        owner=request.user
+    )
+    # basket.save()
+
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    
