@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Створити замовлення</title>
+{% endblock %}
+
+{% block body %}
+<div class="text-center mt-5">
+    <img src="{{ phone.image.url }}" width="124" height="134">
+    <h5>{{ phone.name }}</h5>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.surname }}<br>
+        {{ form.phone_number }}<br>
+        {{ form.email }}<br>
+        <button class="btn btn-success">Замовити</button>
+    </form>
+</div>
+{% endblock %}

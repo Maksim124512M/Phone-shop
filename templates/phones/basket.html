@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Моя корзина</title>
+<link rel="stylesheet" href="{% static 'phones/css/home.css' %}">
+{% endblock %}
+
+{% block body %}
+<div class="phones">
+    {% for basket in baskets %}
+        <div class="phone">
+            <div class="info">
+                <img src="{{ basket.product.image.url }}" width="188" height="250">
+                <h6>{{ basket.product.name }}</h6>
+                <h6>{{ basket.product.price }}</h6>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
