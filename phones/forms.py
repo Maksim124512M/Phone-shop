@@ -1,6 +1,6 @@
 from django import forms
 
-from phones.models import Order
+from phones.models import Order, PhoneReview
 
 
 class CreateOrder(forms.ModelForm):
@@ -20,3 +20,11 @@ class CreateOrder(forms.ModelForm):
     class Meta:
         model = Order
         fields = ['name', 'surname', 'phone_number', 'email']
+
+
+class AddReviewForm(forms.ModelForm):
+    text = forms.CharField(max_length=250, widget=forms.Textarea)
+
+    class Meta:
+        model = PhoneReview
+        fields = ['text']

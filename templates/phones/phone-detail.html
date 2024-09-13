@@ -31,5 +31,23 @@
         <h5>Гаратнія: {{ phone.guarantee }}</h5>
         <h5>Країна виробник: {{ phone.country_of_manufacture }}</h5>
     </div>
+
+    <form method="post" class="text-warning ms-5 mt-2">
+        {% csrf_token %}
+        <h1>Створити відгук</h1>
+        {{ form.text }}<br>
+        <button type="submit" class="btn btn-warning text-white">Надіслати</button>
+    </form>
+
+    <div class="reviews ms-5 mt-5">
+        <h2 class="text-center mb-5">Відгуки</h2>
+        {% for review in reviews %}
+            <div class="review mt-5">
+                <h4>{{ review.author.username }}</h4>
+                <p>{{ review.text }}</p>
+            </div>
+            <a href="{% url 'phones:review_delete' review.id %}" style="text-decoration: none;" class="me-5"><button class="btn btn-warning text-white">Видалити</button></a>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

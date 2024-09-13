@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<title>Моя корзина</title>
+<link rel="stylesheet" href="{% static 'phones/css/home.css' %}">
+{% endblock %}
+
+{% block body %}
+<form method="post" class="text-center mt-5">
+    {% csrf_token %}
+    <h4>Ви хочете видалити відгук для телефона {{ review.product.name }}?</h4>
+    <button class="btn btn-warning text-white mt-1">Видалити</button>
+</form>
+{% endblock %}

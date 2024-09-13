@@ -4,8 +4,8 @@ from django.shortcuts import redirect, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
-from phones.models import Phone, Order, Basket
-from phones.forms import CreateOrder
+from phones.models import Phone, Order, Basket, PhoneReview
+from phones.forms import CreateOrder, AddReviewForm
 
 
 class HomeView(generic.ListView):
@@ -14,10 +14,36 @@ class HomeView(generic.ListView):
     context_object_name = 'phones'
 
 
-class PhoneDetailView(generic.DetailView):
+class PhoneDetailView(generic.DetailView, generic.FormView):
     model = Phone
     template_name = 'phones/phone-detail.html'
     context_object_name = 'phone'
+    form_class = AddReviewForm
+    success_url = reverse_lazy('phones:home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['reviews'] = PhoneReview.objects.filter(product_id=self.kwargs.get('pk')).order_by('-date')
+
+        return context
+
+    def form_valid(self, form):
+        form.instance.product = Phone.objects.get(id=self.kwargs.get('pk'))
+        form.instance.author = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+
+class ReviewDeleteView(generic.DeleteView):
+    model = PhoneReview
+    template_name = 'phones/review-delete.html'
+    success_url = reverse_lazy('phones:home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['review'] = PhoneReview.objects.get(id=self.kwargs.get('pk'))
+
+        return context
 
 
 class CreateOrder(generic.CreateView):
