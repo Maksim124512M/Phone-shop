@@ -8,9 +8,9 @@
 
 {% block body %}
 <div class="text-center mt-5">
-    <img src="{{ request.user.image.url }}" width="124" height="124">
     <h3>{{ request.user.username }}</h3>
     <h4>{{ request.user.email }}</h4>
+    <a href="{% url 'phones:basket' %}">Моя корзина</a>
     <form action="{% url 'users:logout' %}" method="post">
         {% csrf_token %}
         <button class="btn btn-success">Вийти з аккаунту</button>

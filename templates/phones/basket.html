@@ -15,6 +15,9 @@
                 <h6>{{ basket.product.name }}</h6>
                 <h6>{{ basket.product.price }}</h6>
             </div>
+            <a href="{% url 'phones:delete_product_from_basket' basket.id %}">
+                <button class="btn btn-warning w-100">Видалити</button>
+            </a>
         </div>
     {% endfor %}
 </div>

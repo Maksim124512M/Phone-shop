@@ -85,7 +85,13 @@ def add_product_in_basket(request, pk):
         product=product,
         owner=request.user
     )
-    # basket.save()
 
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+
+@login_required
+def delete_product_from_basket(request, pk):
+    basket = Basket.objects.get(id=pk)
+    basket.delete()
     
+    return HttpResponseRedirect(request.META['HTTP_REFERER'])
