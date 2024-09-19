@@ -17,6 +17,6 @@ This is a repository with a site for a phone store.
 
 `cd mobile_shop` - go to the site folder
 
-Then you need to create .env file as in the file requirements.txt
+Then you need to create .env file as in the file .env-example
 
 `python manage.py runserver` - run server for site
