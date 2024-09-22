@@ -1,6 +1,6 @@
 from django.views import generic
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, HttpResponseRedirect
+from django.shortcuts import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -79,7 +79,6 @@ class BasketView(LoginRequiredMixin, generic.ListView):
 @login_required
 def add_product_in_basket(request, pk):
     product = Phone.objects.get(id=pk)
-    basket = Basket.objects.filter(product=product, owner=request.user)
     
     Basket.objects.create(
         product=product,

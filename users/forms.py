@@ -10,12 +10,14 @@ class SignupForm(UserCreationForm):
     email = forms.EmailField(widget=forms.EmailInput(attrs={
         'placeholder': 'Електронна пошта',
     }))
-    password1 = forms.CharField(max_length=150, widget=forms.PasswordInput(attrs={
-        'placeholder': "Пароль",
-    }))
-    password2 = forms.CharField(max_length=150, widget=forms.PasswordInput(attrs={
-        'placeholder': "Підтвердіть пароль",
-    }))
+    password1 = forms.CharField(max_length=150, widget=forms.PasswordInput(
+        attrs={
+            'placeholder': "Пароль",
+        }))
+    password2 = forms.CharField(max_length=150, widget=forms.PasswordInput(
+        attrs={
+            'placeholder': "Підтвердіть пароль",
+        }))
 
     class Meta:
         model = User

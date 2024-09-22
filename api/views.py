@@ -2,7 +2,11 @@ from rest_framework.viewsets import ModelViewSet
 
 from phones.models import Phone, PhoneReview, Order
 
-from api.serializers import PhoneSerializer, PhoneReviewSerializer, OrderSerializer
+from api.serializers import (
+    PhoneSerializer, 
+    PhoneReviewSerializer, 
+    OrderSerializer
+)
 
 
 class PhoneViewSet(ModelViewSet):

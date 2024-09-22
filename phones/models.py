@@ -1,5 +1,4 @@
 from django.db import models
-from django.urls import reverse
 from django.contrib.auth.models import User
 
 
@@ -55,7 +54,7 @@ class PhoneReview(models.Model):
     date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return f'Відгук від {author.username} на {product.name}'
+        return f'Відгук від {self.author.username} на {self.product.name}'
 
     class Meta:
         verbose_name = 'Відгук'
